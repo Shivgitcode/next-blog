@@ -5,8 +5,8 @@ export default function Home() {
     return (
         <div className={styles.container}>
             <div className={styles.textContainer}>
-                <h1>Creative Thoughts Agency.</h1>
-                <p>
+                <h1 className={styles.title}>Creative Thoughts Agency.</h1>
+                <p className={styles.desc}>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat eligendi provident optio iure ea libero vero adipisci nisi dolorum tempore?
                 </p>
                 <div className={styles.buttons}>
