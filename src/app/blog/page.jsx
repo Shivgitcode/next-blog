@@ -2,7 +2,7 @@ import PostCard from "@/components/postCard/PostCard";
 import styles from "./blog.module.css"
 
 const getData = async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts", { next: { revalidate: 3600 } })
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts")
 
     if (res.ok) {
         return res.json()

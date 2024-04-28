@@ -1,8 +1,22 @@
 import Image from "next/image"
 import styles from "./singlepost.module.css"
 
+const getData = async (slug) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
+    if (!res.ok) {
+        throw new Error("Something went wrong");
+    }
 
-export default function singlePost() {
+    return res.json()
+}
+
+
+export default async function singlePost({ params }) {
+    const { slug } = params
+    // console.log(slug)
+    const post = await getData(slug)
+    // console.log(params)
+    console.log(post)
     return (
         <div className={styles.container}>
             <div className={styles.imgContainer}>
@@ -10,7 +24,7 @@ export default function singlePost() {
             </div>
 
             <div className={styles.textContainer}>
-                <h1 className={styles.title}>Title</h1>
+                <h1 className={styles.title}>{post.title}</h1>
                 <div className={styles.detail}>
                     <Image className={styles.avatar} src="/post.jpg" alt="" width={50} height={50}></Image>
                     <div className={styles.detailText}>
@@ -23,9 +37,7 @@ export default function singlePost() {
                     </div>
                 </div>
                 <div className={styles.content}>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error, laboriosam!
-
-
+                    {post.body}
                 </div>
 
             </div>
